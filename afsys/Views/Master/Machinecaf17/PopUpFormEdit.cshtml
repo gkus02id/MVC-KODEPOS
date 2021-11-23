@@ -1,0 +1,135 @@
+﻿<form role="form" method="POST" id="masterPopupForm" mode="@ViewBag.modify_status" onsubmit="event.preventDefault();">
+    <div class="form-group-popup-header">
+        <label class="popup-label-group-title">Machine Entry Form</label>
+        <input type="hidden" class="form-control" data-mandatory="true" dataType="autonumber" dataKey="1" validation-string="AUTONUMBER" name="AUTONUMBER" value="@ViewBag.autonumber" id="autonumber" readonly>
+        <input type="hidden" class="form-control" data-mandatory="true" dataType="string" dataKey="0" validation-string="MODIFY_STATUS" name="MODIFY_STATUS" value="@ViewBag.modify_status" id="modify_status" nosave>
+        <input type="hidden" name="SYSTEM_ID" id="system_id" dataType="string" value="@ViewBag.system_id" />  
+        <input type="hidden" name="MACHINE_ID" id="machine_id" dataType="string" value="@ViewBag.machine_id" />
+        <input type="hidden" name="popup_type" id="popup_type" value="machine" nosave>   
+    </div>
+    <div class="form-content-group-popup">
+        <div class="form-content-group-popup-detail">
+            <div class="popup-section @ViewBag.layoutCSS">
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Name</label>
+                    <div class="popup-input-group-col-md-6">
+                        <input id="description" data-id="010702" class="form-control" data-mandatory="true" dataType="string" maxlength="30" validation-string="Name" name="DESCRIPTION" value="@ViewBag.description" uppercase>
+                        <div class="description validation-result" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Type</label>
+                    <div class="popup-input-group-col-md-6">
+                        <select name="MACHINE_TYPE" id="machine_type" placeholder="select..." " dataType="string" validation-string="Machine Type" class="form-control popup-select-group" @ViewBag.cssDisabled>
+                            @Html.Raw(ViewBag.listMachineType)
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Buffer</label>
+                    <div class="popup-input-group-col-md-6">
+                        <select name="BUFFER" id="buffer" placeholder="select..." " dataType="string" validation-string="Buffer" class="form-control popup-select-group" @ViewBag.cssDisabled>
+                            @Html.Raw(ViewBag.listBuffer)
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">OnProcess</label>
+                    <div class="popup-input-group-col-md-6">
+                        <select name="ONPROCESS" id="onprocess" placeholder="select..." " dataType="string" validation-string="OnProcess" class="form-control popup-select-group" @ViewBag.cssDisabled>
+                            @Html.Raw(ViewBag.listOnprocess)
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Output</label>
+                    <div class="popup-input-group-col-md-6">
+                        <select name="OUTPUT" id="output" placeholder="select..." " dataType="string" validation-string="Output" class="form-control popup-select-group" @ViewBag.cssDisabled>
+                            @Html.Raw(ViewBag.listOutput)
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-popup-footer">
+        <input type="hidden" dataType="string" name="MODIFY_STATUS" value="@ViewBag.modify_status" nosave>
+        <button data-remodal-action="confirm" id="remodal-confirm" class="remodal-confirm">Save</button>
+        <button data-remodal-action="cancel" id="remodal-cancel" class="remodal-cancel">Cancel</button>
+        <button id="remodal-end" class="remodal-end"></button>
+    </div>
+</form>
+
+<style>
+    <!--
+
+    .popup-label-item {
+        width: 22% !important;
+    }
+
+    .remodal {
+        width: 600px !important;
+    }
+
+    .remodal-wrapper {
+        top: -5%;
+    }
+
+    .popup-section {
+        border: 5px solid #206294;
+        min-height: 230px;
+        padding-top: 10px;
+    }
+
+    .extend-layout {
+        min-height: 260px !important;
+    }
+
+    .remodal-form-group-popup {
+        display: block;
+        float: left;
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+
+    .form-row {
+        display: block;
+        float: left;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .custom-popup-label-group {
+        display: block;
+        float: left;
+        width: 100px !important;
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .custom-popup-input-group {
+        display: block;
+        float: left;
+        width: 300px !important;
+    }
+
+    .form-control-date {
+        width: 100px !important;
+    }
+
+    .field-group {
+        width: 270px !important;
+    }
+
+    .new-value-group {
+        height: 32px !important;
+    }
+
+    #discountinue {
+        width: 75px;
+    }
+
+    // -->
+</style>

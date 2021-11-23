@@ -1,0 +1,106 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @ViewBag.menuTitle
+        <small>@ViewBag.menuDescription</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@ViewBag.urlModule"><i class="fa fa-dashboard"></i> @ViewBag.module</a></li>
+        <li class="active">@ViewBag.subModule</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading custom">
+                        <div class="panel-heading-content floatleft">
+                            <h3 class="panel-title">User</h3>
+                        </div>
+                        <div class="panel-heading-content floatright">
+                            <div class="remodal-bg">
+                                @if (ViewBag.userRole == "1")
+                                {
+                                <a href="#" onclick="event.preventDefault();openPopupForm('0001','remodalform','remodal','')"><i class="fa fa-plus"></i>&nbsp;add record</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body list-container" id="listDataTable">
+                        @Html.Raw(ViewBag.listData)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="loader" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Processing...</h5>
+            </div>
+            <div class="modal-body">
+                <div class="progress progress-striped active">
+                    <div class="bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #dataList th {
+        text-align:center;
+    }
+
+    #dataList td.DTCOL_USERID, #dataList td.DTCOL_NIK {
+        width:10%;
+    }
+
+    #dataList td.DTCOL_ACTION {
+        width:10%;
+        text-align:center;
+    }
+ 
+    #dataList td.DTCOL_POSITION, #dataList td.DTCOL_DIVISION, #dataList td.DTCOL_SUB_DIVISION, #dataList td.DTCOL_GROUP_NAME {
+        width:12.5%;
+    }
+
+    #dataList td.DTCOL_FULLNAME {
+        width:20%;
+    }
+</style>
+
+<script language="javascript">
+<!--
+    var oFormField = "@ViewBag.oField";
+//-->
+</script>
+<script language="javascript" src="/assets/js/master/function-ms-0001.js"></script>
+<script language="javascript">
+<!--
+    $(function() {
+        $("#dataList").DataTable({
+            "columnDefs": [
+               {
+                   "targets": [1],
+                   "visible": false,
+                   "searchable": true
+               }
+            ],
+            "order": [[1, "desc"]],
+            "ordering": true,
+            "language": {"search": "Search : "},
+            "pageLength": 25,
+            "responsive": true,
+            "stateSave": true});
+    });
+//-->
+</script>
+<!--
+<script language="javascript" src="assets/js/core_remodal_footer.js"></script>
+-->

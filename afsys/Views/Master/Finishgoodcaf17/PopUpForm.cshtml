@@ -1,0 +1,230 @@
+﻿<form role="form" method="POST" id="masterPopupForm" mode="@ViewBag.modify_status" onsubmit="event.preventDefault();">
+    <div class="form-group-popup-header">
+        <label class="popup-label-group-title">Finished Good Entry Form</label>
+        <input type="hidden" name="AUTONUMBER" id="AUTONUMBER" dataType="autonumber" dataKey="1" value="@ViewBag.autonumber" />
+        <input type="hidden" name="SYSTEM_ID" id="SYSTEM_ID" dataType="string" value="@ViewBag.system_id" />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_OBJECT_ID" value="0106" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_TOP_OBJECT_ID" value="" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_TOP_FIELD_NAME" value="" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="FILE_IN" value="@ViewBag.file_in" />
+        <input type="hidden" dataType="string" dataKey="0" name="FILE_OUT" value="@ViewBag.file_out" />
+        <input type="hidden" dataType="string" dataKey="0" name="CATEGORY_ID" value="@ViewBag.category_id" />
+   </div>
+    <div class="form-content-group-popup">
+        <div class="form-content-group-popup-detail">
+            <div class="popup-section @ViewBag.layoutCSS">
+                <div class="form-width-50">
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Code</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input id="product_code" data-id="010601" next-el="short_name" class="form-control" data-mandatory="true" data-type="unique" dataType="string" dataKey="0" maxlength="14" validation-string="Product Code" name="PRODUCT_CODE" value="@ViewBag.product_code" uppercase @ViewBag.readonlyCSS>
+                            <div class="product_code validation-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Product ID Cust</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input id="pid_customer" data-id="010602" next-el="description" class="form-control" data-mandatory="true" dataType="string" maxlength="30" validation-string="Product Id Customer" name="PID_CUSTOMER" value="@ViewBag.pid_customer" uppercase>
+                            <div class="pid_customer validation-result" style="display: none;"></div>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Name</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input type="hidden" name="SHORT_NAME" id="short_name" class="form-control" dataType="string" maxlength="50" validation-string="" value="@ViewBag.description" uppercase />
+                            <input id="description" data-id="010603" class="form-control" dataType="string" dataKey="0" maxlength="50" validation-string="Name" name="DESCRIPTION" value="@ViewBag.description" uppercase>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Alias</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input id="alt_name" class="form-control" dataType="string" maxlength="50" name="ALT_NAME" value="@ViewBag.alt_name">
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Barcode</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input id="alt_code" class="form-control" dataType="string" maxlength="50" name="ALT_CODE" value="@ViewBag.alt_code">
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Material</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input id="alt_code" class="form-control" dataType="string" maxlength="50" name="MATERIAL" value="@ViewBag.material">
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Category</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input id="category_name" class="form-control" dataType="string" maxlength="50" name="CATEGORY_NAME" value="@ViewBag.category_name" readonly nosave>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Customer</label>
+                        <div class="popup-input-group-col-md-6">
+                            <select name="CUSTOMER_ID" id="customer_id" placeholder="select..." data-mandatory="true" dataType="string" validation-string="Inventory Status" class="form-control popup-select-group">
+                                @Html.Raw(ViewBag.listCustomer)
+                            </select>
+                            <a href="javascript:openShortPopupForm('0122','subremodalform','subremodal','')" class="form-control new-value-group"><i class="fa fa-plus fa-plus-new-value-group"></i></a>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Unit Price</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input class="form-control" data-mandatory="true" dataType="decimal2" validation-string="Unit Price" style="width:120px;" dir="rtl" name="UNIT_PRICE" value="@ViewBag.unit_price">
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Cavity</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input class="form-control" data-mandatory="true" dataType="decimal2" validation-string="Cavity" style="width:120px;" dir="rtl" name="CAVITY" value="@ViewBag.cavity">
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Over Production %</label>
+                        <div class="popup-input-group-col-md-6">
+                            <input class="form-control" data-mandatory="true" dataType="decimal2" validation-string="over_production_percent" style="width:120px;" dir="rtl" name="OVER_PRODUCTION_PERCENT" value="@ViewBag.over_production_percent">
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Inventory Status</label>
+                        <div class="popup-input-group-col-md-6">
+                            <select name="INVSTATUS_ID" id="invstatus" placeholder="select..." data-mandatory="true" dataType="string" validation-string="Inventory Status" class="form-control popup-select-group">
+                                @Html.Raw(ViewBag.listInvStatus)
+                            </select>
+                            <a href="javascript:openPopupForm('0104','subremodalform','subremodal','')" class="form-control new-value-group"><i class="fa fa-plus fa-plus-new-value-group"></i></a>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Discontinue</label>
+                        <div class="popup-input-group-col-md-6">
+                            <select class="form-control popup-select-group" name="DISCOUNTINUE" id="discountinue" placeholder="select..." dataType="string" validation-string="Discontinue">
+                                @Html.Raw(ViewBag.listDiscountinue)
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-width-50">
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">UOM</label>
+                        <div class="popup-input-group-col-md-6">
+                            <select name="UOM_ID" id="uom_id" placeholder="select..." data-mandatory="true" dataType="string" validation-string="Uom Status" class="form-control popup-select-group">
+                                @Html.Raw(ViewBag.listUom)
+                            </select>
+                            <a href="javascript:openPopupFormWithParam('0111','subremodalform','subremodal','top_object_id=0106')" class="form-control new-value-group"><i class="fa fa-plus fa-plus-new-value-group"></i></a>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">Keterangan</label>
+                        <div class="popup-input-group-col-md-6">
+                            <textarea id="note" class="form-control" dataType="string" rows="5" cols="50" name="NOTE">@ViewBag.note</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">File In</label>
+                        <div class="popup-input-group-col-md-6">
+                            <div class="popup-image-full">
+                                <div class="popup-image-row"><input type="file" id="image_in_tmp" dataType="string" class="form-control" name="image_in_tmp" nosave /></div>
+                                <div id="preview-imagein" class="popup-image-row">@Html.Raw(ViewBag.imageinView)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-popup">
+                        <label class="popup-label-group-col-md-6 popup-label-item">File Out</label>
+                        <div class="popup-input-group-col-md-6">
+                            <div class="popup-image-full">
+                                <div class="popup-image-row"><input type="file" id="image_out_tmp" dataType="string" class="form-control" name="image_out_tmp" nosave /></div>
+                                <div id="preview-imageout" class="popup-image-row">@Html.Raw(ViewBag.imageoutView)</div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-popup-footer">
+        <input type="hidden" dataType="string" name="MODIFY_STATUS" value="@ViewBag.modify_status" nosave>
+        <button data-remodal-action="confirm" id="remodal-confirm" class="remodal-confirm">Save</button>
+        <button data-remodal-action="cancel" id="remodal-cancel" class="remodal-cancel">Cancel</button>
+        <button id="remodal-end" class="remodal-end"></button>
+    </div>
+</form>
+
+<style>
+    <!--
+
+    .form-width-50 {
+        display:block;
+        float:left;
+        width:460px;
+    }
+
+    .popup-label-item {
+        width:22%!important;
+    }
+
+    .remodal {
+        width: 1000px !important;
+    }
+
+    .remodal-wrapper {
+        top: -5%;
+    }
+
+    .popup-section {
+        border: 5px solid #206294;
+        min-height: 450px;
+        padding-top: 10px;
+    }
+
+    .extend-layout {
+        min-height:550px!important;
+    }
+
+    .remodal-form-group-popup {
+        display: block;
+        float: left;
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+
+    .form-row {
+        display: block;
+        float: left;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .custom-popup-label-group {
+        display: block;
+        float: left;
+        width: 100px !important;
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .custom-popup-input-group {
+        display: block;
+        float: left;
+        width: 300px !important;
+    }
+
+    .form-control-date {
+        width: 100px !important;
+    }
+
+    .field-group {
+        width: 270px !important;
+    }
+
+    .new-value-group {
+        height: 32px!important;
+    }
+
+    #discountinue {
+        width:75px;
+    }
+
+    // -->
+</style>
+

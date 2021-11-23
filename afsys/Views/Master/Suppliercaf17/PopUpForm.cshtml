@@ -1,0 +1,132 @@
+﻿<form role="form" method="POST" id="masterPopupForm" mode="@ViewBag.modify_status" onsubmit="event.preventDefault();">
+    <div class="form-group-popup-header">
+        <label class="popup-label-group-title">Supplier Entry Form</label>
+        <input type="hidden" name="AUTONUMBER" id="AUTONUMBER" dataType="autonumber" dataKey="1" value="@ViewBag.autonumber" />
+        <input type="hidden" name="SYSTEM_ID" id="SYSTEM_ID" dataType="string" value="@ViewBag.system_id" />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_OBJECT_ID" value="0121" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_TOP_OBJECT_ID" value="" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_TOP_FIELD_NAME" value="" nosave />
+    </div>
+    <div class="form-content-group-popup">
+        <div class="form-content-group-popup-detail">
+            <div class="popup-section">
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Code</label>
+                    <div class="popup-input-group-col-md-6">
+                        <input id="supplier_code" data-id="012101" next-el="description" class="form-control" data-mandatory="true" data-type="unique" dataType="string" dataKey="0" maxlength="10" validation-string="Code" name="SUPPLIER_CODE" value="@ViewBag.supplier_code" uppercase @ViewBag.readonlyCSS>
+                        <div class="supplier_code validation-result" style="display: none;"></div>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Name</label>
+                    <div class="popup-input-group-col-md-6">
+                        <input id="description" data-id="012102" next-el="addresss" class="form-control" data-mandatory="true" dataType="string" maxlength="100" validation-string="Description" name="DESCRIPTION" value="@ViewBag.description" uppercase>
+                        <div class="description validation-result" style="display: none;"></div>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Address</label>
+                    <div class="popup-input-group-col-md-6">
+                        <input id="address" class="form-control" dataType="string" maxlength="100" validation-string="Address" name="ADDRESS" value="@ViewBag.address" uppercase>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Contact Person</label>
+                    <div class="popup-input-group-col-md-6">
+                        <input id="contact_person" class="form-control" dataType="string" maxlength="50" validation-string="Contact Person" name="CONTACT_PERSON" value="@ViewBag.contact_person" uppercase>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Phone</label>
+                    <div class="popup-input-group-col-md-6">
+                        <input id="phone" class="form-control" dataType="string" maxlength="50" validation-string="Phone" name="PHONE" value="@ViewBag.phone" uppercase>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-group-col-md-6 popup-label-item">Fax</label>
+                    <div class="popup-input-group-col-md-6">
+                        <input id="fax" class="form-control" dataType="string" maxlength="50" validation-string="Fax" name="FAX" value="@ViewBag.fax" uppercase>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-popup-footer">
+        <input type="hidden" dataType="string" name="MODIFY_STATUS" value="@ViewBag.modify_status" nosave>
+        <button data-remodal-action="confirm" id="remodal-confirm" class="remodal-confirm">Save</button>
+        <button data-remodal-action="cancel" id="remodal-cancel" class="remodal-cancel">Cancel</button>
+        <button id="remodal-end" class="remodal-end"></button>
+    </div>
+</form>
+
+<style>
+    <!--
+
+    .popup-label-item {
+        width: 22% !important;
+    }
+
+    .remodal {
+        width: 600px !important;
+    }
+
+    .remodal-wrapper {
+        top: -5%;
+    }
+
+    .popup-section {
+        border: 5px solid #206294;
+        min-height: 250px;
+        padding-top: 10px;
+    }
+
+    .extend-layout {
+        min-height: 250px !important;
+    }
+
+    .remodal-form-group-popup {
+        display: block;
+        float: left;
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+
+    .form-row {
+        display: block;
+        float: left;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .custom-popup-label-group {
+        display: block;
+        float: left;
+        width: 100px !important;
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .custom-popup-input-group {
+        display: block;
+        float: left;
+        width: 300px !important;
+    }
+
+    .form-control-date {
+        width: 100px !important;
+    }
+
+    .field-group {
+        width: 270px !important;
+    }
+
+    .new-value-group {
+        height: 32px !important;
+    }
+
+    #discountinue {
+        width: 75px;
+    }
+
+    // -->
+</style>

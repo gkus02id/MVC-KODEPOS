@@ -1,0 +1,16 @@
+﻿<div class="subremodal-form-group-popup">
+    <label class="custom-popup-label-group">Code</label>
+    <div class="custom-popup-input-group">
+        <input id="category_code" data-id="010201" next-el="description" class="form-control" data-mandatory="true" dataType="string" maxlength="10" validation-string="Code" name="CATEGORY_CODE" value="@ViewBag.category_code" uppercase>
+        <div class="category_code validation-result" style="display: none;"></div>
+    </div>
+</div>
+<div class="subremodal-form-group-popup">
+    <label class="custom-popup-label-group">Category</label>
+    <div class="custom-popup-input-group">
+        <input id="description" data-id="010202" next-el="remodal-confirm" class="form-control" data-mandatory="true" dataType="string" maxlength="100" validation-string="Category" name="DESCRIPTION" value="@ViewBag.description" uppercase>
+        <div class="description validation-result" style="display: none;"></div>
+    </div>
+</div>
+<input type="hidden" name="AUTONUMBER_TMP" id="AUTONUMBER_TMP" value="@ViewBag.autonumber" nosave />
+<input type="hidden" name="SYSTEM_ID_TMP" id="SYSTEM_ID_TMP" value="@ViewBag.system_id" nosave />

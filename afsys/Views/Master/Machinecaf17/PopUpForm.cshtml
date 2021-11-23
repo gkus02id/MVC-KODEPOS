@@ -1,0 +1,166 @@
+﻿@*<button data-remodal-action="close" class="remodal-close" id="btnCloseForm"></button>*@
+<form role="form" method="POST" id="masterPopupForm" mode="@ViewBag.modify_status" onsubmit="event.preventDefault();">
+    <div class="form-group-popup-header">
+        <label class="popup-label-group-title" id="titlePopup">Machine Entry Form</label>
+        <input type="hidden" class="form-control" data-mandatory="true" dataType="autonumber" dataKey="0" validation-string="AUTONUMBER" name="AUTONUMBER" value="@ViewBag.autonumber" id="autonumber" readonly>
+        <input type="hidden" class="form-control" data-mandatory="true" dataType="autonumber" dataKey="0" validation-string="AUTONUMBER_DTL" name="AUTONUMBER_DTL" value="0" id="autonumber_dtl" readonly nosave="true">
+        <input type="hidden" class="form-control" data-mandatory="true" dataType="string" dataKey="0" validation-string="MODIFY_STATUS" name="MODIFY_STATUS" value="@ViewBag.modify_status" id="modify_status" nosave>
+        <input type="hidden" class="form-control" data-mandatory="true" dataType="string" dataKey="0" validation-string="MODIFY_STATUS_DTL" name="MODIFY_STATUS_DTL" value="INS" id="modify_status_dtl" readonly nosave="true">
+        <input type="hidden" name="SYSTEM_ID" id="system_id" dataType="string" value="@ViewBag.system_id" />
+        <input type="hidden" dataType="string" name="SYSTEM_ID_DTL" id="system_id_dtl" value="@ViewBag.system_id_dtl" nosave="true" />     
+        <input type="hidden" name="popup_type" id="popup_type" value="fg" />      
+    </div>
+    <div class="form-content-group-popup">
+        <div class="form-content-group-popup-detail">
+            <div class="col-md-6 leftinput">
+                <div class="panel panel-default">
+                    <div class="form-group-popup custom-row" style="margin-top:5px;margin-left:5px;margin-right:5px;">
+                        <label class="popup-label-group-col-md-6 @ViewBag.cssLeftSide">Code</label>
+                        <div class="popup-input-group-col-md-6 @ViewBag.cssRightSide">
+                            <input id="document_no" class="form-control" data-mandatory="true" dataType="string" validation-string="Code" name="MACHINE_ID" value="@ViewBag.machine_id" readonly="true" >
+                        </div>
+                    </div>                    
+                    <div class="form-group-popup custom-row" style="margin-top:5px;margin-left:5px;margin-right:5px;">
+                        <label class="popup-label-group-col-md-6 @ViewBag.cssLeftSide">Name</label>
+                        <div class="popup-input-group-col-md-6 @ViewBag.cssRightSide">
+                            <input id="document_date" class="form-control" data-mandatory="true" dataType="string" validation-string="Name" name="DESCRIPTION" value="@ViewBag.description" readonly="true">
+                        </div>
+                    </div>
+
+                    <div class="form-group-popup custom-row" style="margin-left:5px;margin-right:5px;margin-top:-4px;">
+                        <label class="popup-label-group-col-md-6 @ViewBag.cssLeftSide">Finish Good</label>
+                        <div class="popup-input-group-col-md-6 @ViewBag.cssRightSide">
+                            <select name="PRODUCT_CODE" id="product_code" placeholder="select..." " dataType="string" validation-string="Finish Good" class="form-control popup-select-group" @ViewBag.cssDisabled nosave >
+                                @Html.Raw(ViewBag.optMasterItemFG)
+                            </select>
+                            <div id="product_list" style="display:none!important"></div>
+                        </div>
+                    </div>
+                    <div class="form-group-popup custom-row" style="margin-left:5px;margin-right:5px;;margin-bottom:5px;">
+                        <label class="popup-label-group-col-md-6  @ViewBag.cssLeftSide"></label>
+                        <div class="popup-input-group-col-md-6 @ViewBag.cssRightSide">
+                            <button id="add" class="remodal-confirm" style="float:right;">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 rightlist">
+                <div class="panel panel-default">
+                    <div class="form-group-popup custom-row">
+                        <div class="panel-heading-content floatright">
+                            <div class="remodal-bg">
+                            </div>
+                        </div>
+                        <div class="panel-body list-container" id="listDetailDataTable">
+                            <table id="dataListDtl" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="col-mitem-no">No.</th>
+                                        <th class="col-mitem-name">Finish Good</th>
+                                        <th class="col-link"></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-popup-footer">
+        <button data-remodal-action="confirm" id="remodal-confirm" class="remodal-confirm" name="SAVE" nosave="true">Save</button>
+        <button data-remodal-action="cancel" id="remodal-cancel" class="remodal-cancel">Cancel</button>
+        <button id="remodal-end" class="remodal-end"></button>
+    </div>
+</form>
+<style>
+    .remodal {
+        max-width: 1550px;
+    }
+
+    .custom-row {
+        padding-bottom:10px!important;
+    }
+
+    .row-hide {
+        display:none!important;
+    }
+
+    .left-po-edit-mode {
+        width:120px!important;
+    }
+    
+    .right-po-edit-mode {
+        width:507px!important;
+    }
+
+    .remodal-close {
+        left: 97%;
+    }
+
+    .popup-label-group-col-md-6 {
+        width: 15% !important;
+    }
+
+    .popup-input-group-col-md-6 {
+        width: 84% !important;
+    }
+
+    th.col-mitem-no {
+        width: 3% !important;
+    }
+
+    th.col-mitem-name {
+        width: 67% !important;
+    }
+
+    th.col-link {
+        width: 20% !important;
+    }
+
+    td.DTCOL_DESCRIPTION {
+        text-align: left !important;
+    }
+
+    td.DTCOL_QTY {
+        text-align: right !important;
+    }
+
+    .remodal-bg {
+        padding-right: 2px;
+        padding-bottom: 4px;
+    }
+
+    .upload-button {
+        font: inherit;
+        display: inline-block;
+        overflow: visible;
+        min-width: 110px;
+        margin: 0;
+        padding: 6px 0;
+        cursor: pointer;
+        -webkit-transition: background 0.2s;
+        transition: background 0.2s;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        border: 0;
+        outline: 0;
+        border: #4b4b4b 1px solid;
+    }
+
+        .upload-button:hover, .upload-button:focus {
+            color: #000 !important;
+            background: #fff !important;
+            border: #4b4b4b 1px solid;
+        }
+
+    .leftinput {
+        width: 40% !important;
+    }
+
+    .rightlist {
+        width: 55% !important;
+    }
+</style>

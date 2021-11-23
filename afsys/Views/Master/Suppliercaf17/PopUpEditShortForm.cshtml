@@ -1,0 +1,41 @@
+﻿    <div class="subremodal-form-group-popup">
+        <label class="custom-popup-label-group">Code</label>
+        <div class="custom-popup-input-group">
+            <input id="supplier_code" data-id="012101" next-el="description" class="form-control" data-mandatory="true" data-type="unique" dataType="string" dataKey="0" maxlength="10" validation-string="Code" name="SUPPLIER_CODE" value="@ViewBag.supplier_code" uppercase readonly>
+            <div class="supplier_code validation-result" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="subremodal-form-group-popup">
+        <label class="custom-popup-label-group">Name</label>
+        <div class="custom-popup-input-group">
+            <input id="description" data-id="012102" next-el="addresss" class="form-control" data-mandatory="true" dataType="string" maxlength="100" validation-string="Description" name="DESCRIPTION" value="@ViewBag.description" uppercase>
+            <div class="description validation-result" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="subremodal-form-group-popup">
+        <label class="custom-popup-label-group">Address</label>
+        <div class="custom-popup-input-group">
+            <input id="address" class="form-control" dataType="string" maxlength="100" validation-string="Address" name="ADDRESS" value="@ViewBag.address" uppercase>
+        </div>
+    </div>
+    <div class="subremodal-form-group-popup">
+        <label class="custom-popup-label-group">Contact Person</label>
+        <div class="custom-popup-input-group">
+            <input id="contact_person" class="form-control" dataType="string" maxlength="50" validation-string="Contact Person" name="CONTACT_PERSON" value="@ViewBag.contact_person" uppercase>
+        </div>
+    </div>
+    <div class="subremodal-form-group-popup">
+        <label class="custom-popup-label-group">Phone</label>
+        <div class="custom-popup-input-group">
+            <input id="phone" class="form-control" dataType="string" maxlength="50" validation-string="Phone" name="PHONE" value="@ViewBag.phone" uppercase>
+        </div>
+    </div>
+    <div class="subremodal-form-group-popup">
+        <label class="custom-popup-label-group">Fax</label>
+        <div class="custom-popup-input-group">
+            <input id="fax" class="form-control" dataType="string" maxlength="50" validation-string="Fax" name="FAX" value="@ViewBag.fax" uppercase>
+        </div>
+    </div>
+</div>
+<input type="hidden" name="AUTONUMBER_TMP" id="AUTONUMBER_TMP" value="@ViewBag.autonumber" nosave />
+<input type="hidden" name="SYSTEM_ID_TMP" id="SYSTEM_ID_TMP" value="@ViewBag.system_id" nosave />

@@ -1,0 +1,150 @@
+﻿<form role="form" method="POST" id="masterPopupForm" mode="@ViewBag.modify_status" onsubmit="event.preventDefault();">
+    <div class="form-group-popup-header">
+        <label class="popup-label-group-title">User Setup Entry Form</label>
+        <input type="hidden" name="AUTONUMBER" id="AUTONUMBER" dataType="autonumber" dataKey="1" value="@ViewBag.autonumber" />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_OBJECT_ID" value="0101" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_TOP_OBJECT_ID" value="" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="POPUP_TOP_FIELD_NAME" value="" nosave />
+        <input type="hidden" dataType="string" dataKey="0" name="USER_RIGHT" value="@ViewBag.user_right">
+        <input type="hidden" dataType="string" dataKey="0" name="APPROVAL_PO" id="approval_po" value="@ViewBag.approval_po" />
+        <input type="hidden" dataType="string" dataKey="0" name="EDIT_SCHEDULE_SO" id="edit_schedule_so" value="@ViewBag.edit_schedule_so" />
+    </div>
+    <div class="form-content-group-popup">
+        <div class="form-content-group-popup-detail">
+            <div class="row">
+                <div class="form-group-popup @ViewBag.optionUserId">
+                    <label class="popup-label-cgroup">User Id</label>
+                    <div class="popup-input-cgroup">
+                        <input id="userid" data-id="000101" next-el="password" class="form-control custom-form-control" data-mandatory="true" data-type="unique" dataType="string" dataKey="0" maxlength="50" validation-string="User Id" name="USERID" value="@ViewBag.userid">
+                        <div class="userid validation-result" style="display: none;"></div>
+                    </div>
+                </div>
+				<div class="form-group-popup">
+                    <label class="popup-label-cgroup">Password</label>
+                    <div class="popup-input-cgroup">
+                        <input id="password" class="form-control custom-form-control" type="password" @ViewBag.extend_option dataType="password" dataKey="0" maxlength="50" validation-string="Password" name="PASSWORD" value="">
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-cgroup">Full Name</label>
+                    <div class="popup-input-cgroup">
+                        <input id="fullname" class="form-control custom-form-control" data-mandatory="true" dataType="string" dataKey="0" maxlength="50" validation-string="Full Name" name="FULLNAME" value="@ViewBag.fullname">
+                    </div>
+                </div>
+                <div class="form-group-popup" style="height:33px">
+                    <label class="popup-label-cgroup">Gender</label>
+                    <div class="popup-input-cgroup">
+                        <select name="GENDER" id="gender" placeholder="select..." data-mandatory="true" dataType="string" validation-string="Gender" class="form-control popup-select-group">
+                            @Html.Raw(ViewBag.listGender)
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-cgroup">Group Role</label>
+                    <div class="popup-input-cgroup">
+                        <select name="GROUP_ROLE" id="group_role" placeholder="select..." data-mandatory="true" dataType="string" validation-string="Group Role" class="form-control popup-select-group">
+                            @Html.Raw(ViewBag.listGroupRole)
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-cgroup">Mesin</label>
+                    <div class="popup-input-cgroup">
+                        <select name="DEFAULT_MACHINE" id="default_machine" placeholder="select..." data-mandatory="true" dataType="string" validation-string="Group Role" class="form-control popup-select-group">
+                            @Html.Raw(ViewBag.listMachine)
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-cgroup">Warehouse</label>
+                    <div class="popup-input-cgroup">
+                        <select name="DEFAULT_WAREHOUSE" id="default_warehouse" placeholder="select..." data-mandatory="true" dataType="string" validation-string="Group Role" class="form-control popup-select-group">
+                            @Html.Raw(ViewBag.listWarehouse)
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-popup">
+                    <label class="popup-label-cgroup">&nbsp;</label>
+                    <div class="popup-input-cgroup">
+                        <span style="display:block;float:left;width:40%">
+                            <input type="checkbox" name="APPROVAL_PO_TMP" id="approval_po_tmp" onclick="eventApprovalPo()" value="1" @ViewBag.approval_po_tmp nosave />
+                            <label for="approval_po_tmp">Approval Po</label>
+                        </span>
+                        <span style="display:block;float:left;width:40%">
+                            <input type="checkbox" name="EDIT_SCHEDULE_SO" id="edit_schedule_so_tmp" onclick="eventEditScheduleSo()" value="1" @ViewBag.edit_schedule_so_tmp nosave />
+                            <label for="edit_schedule_so_tmp">Edit Schedule So</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-popup-footer">
+        <input type="hidden" dataType="string" name="MODIFY_STATUS" value="@ViewBag.modify_status" nosave>
+        <button data-remodal-action="confirm" id="remodal-confirm" class="remodal-confirm">Save</button>
+        <button data-remodal-action="cancel" id="remodal-cancel" class="remodal-cancel">Cancel</button>
+        <button id="remodal-end" class="remodal-end"></button>
+    </div>
+</form>
+
+<script language="javascript">
+<!--
+    $("select[name='GENDER']").selectize();
+    $("select[name='GROUP_ROLE']").selectize();
+    $("select[name='DEFAULT_MACHINE']").selectize();
+    $("select[name='DEFAULT_WAREHOUSE']").selectize();
+
+    function eventApprovalPo() {
+        if ($("#approval_po_tmp").prop("checked")) {
+            $("input[name='APPROVAL_PO']").val("1");
+        } else {
+            $("input[name='APPROVAL_PO']").val("0");
+        }
+    }
+
+    function eventEditScheduleSo() {
+        if ($("#edit_schedule_so_tmp").prop("checked")) {
+            $("input[name='EDIT_SCHEDULE_SO']").val("1");
+        } else {
+            $("input[name='EDIT_SCHEDULE_SO']").val("0");
+        }
+    }
+//-->
+</script>
+
+<style>
+ <!--
+    .remodal {
+        width: 700px !important;
+    }
+
+    .new-value-group {
+        height: 30px!important;
+        width: 25px!important;
+    }
+	
+	.popup-label-cgroup {
+		display: inline-table!important;
+		width: 27%!important;
+		text-align: left!important;
+		vertical-align: top;
+		margin-top: 4px;
+	}
+	
+	.popup-input-cgroup {
+		display: inline-table!important;
+		width: 71%!important;
+		text-align: left!important;
+	}	
+	
+	.custom-form-control {
+		width:90%!important;
+	}
+
+    .hide-element {
+        display:none!important;
+    }
+
+
+// -->
+</style>

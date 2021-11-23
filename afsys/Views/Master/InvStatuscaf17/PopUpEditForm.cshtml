@@ -1,0 +1,17 @@
+﻿
+<div class="subremodal-form-group-popup">
+    <label class="custom-popup-label-group">Code</label>
+    <div class="custom-popup-input-group">
+        <input id="invstatus_code" data-id="010401" next-el="description" class="form-control" data-mandatory="true" dataType="string" maxlength="10" validation-string="Code" name="INVSTATUS_CODE" value="@ViewBag.invstatus_code" uppercase>
+        <div class="invstatus_code validation-result" style="display: none;"></div>
+    </div>
+</div>
+<div class="subremodal-form-group-popup">
+    <label class="custom-popup-label-group">STATUS</label>
+    <div class="custom-popup-input-group">
+        <input id="description" data-id="010402" next-el="remodal-confirm" class="form-control" data-mandatory="true" dataType="string" maxlength="100" validation-string="Status" name="DESCRIPTION" value="@ViewBag.description" uppercase>
+        <div class="description validation-result" style="display: none;"></div>
+    </div>
+</div>
+<input type="hidden" name="AUTONUMBER_TMP" id="AUTONUMBER_TMP" value="@ViewBag.autonumber" nosave />
+<input type="hidden" name="SYSTEM_ID_TMP" id="SYSTEM_ID_TMP" value="@ViewBag.system_id" nosave />

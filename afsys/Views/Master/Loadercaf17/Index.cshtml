@@ -1,0 +1,81 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @ViewBag.menuTitle
+        <small>@ViewBag.menuDescription</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@ViewBag.urlModule"><i class="fa fa-dashboard"></i> @ViewBag.module</a></li>
+        <li class="active">@ViewBag.subModule</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading custom">
+                        <div class="panel-heading-content floatleft">
+                            <h3 class="panel-title">Loader List</h3>
+                        </div>
+                        <div class="panel-heading-content floatright">
+                            <div class="remodal-bg">
+                                <a href="javascript:openPopupForm('0112','remodalform','remodal','')"><i class="fa fa-plus"></i>&nbsp;add record</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body list-container" id="listDataTable">
+                        @Html.Raw(ViewBag.listData)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="loader" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Processing...</h5>
+            </div>
+            <div class="modal-body">
+                <div class="progress progress-striped active">
+                    <div class="bar" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="javascript">
+<!--
+    var oFormField = "@ViewBag.oField";
+//-->
+</script>
+<script language="javascript" src="/assets/js/master/function-ms-0112.js"></script>
+<script language="javascript">
+<!--
+    $(function() {
+        $("#dataList").DataTable({
+            "columnDefs": [
+               {
+                   "targets": [0],
+                   "visible": false,
+                   "searchable": false
+               }
+            ],
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "language": {"search": "Search : "},
+            "pageLength": 25,
+            "responsive": true,
+            "stateSave": true});
+    });
+//-->
+</script>
+<!--
+<script language="javascript" src="assets/js/core_remodal_footer.js"></script>
+//-->
